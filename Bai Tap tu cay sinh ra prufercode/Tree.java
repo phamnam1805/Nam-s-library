@@ -18,7 +18,7 @@ public class Tree {
         }
         System.out.println("Nhập các cạnh của cây :");
         for(int i = 0; i < tree.length; i++){
-			System.out.print("Nhap vao canh "+i+": ");
+			System.out.println("Nhap vao canh "+(i+1)+": ");
             tree[i][0] = scan.nextInt();
             tree[i][1] = scan.nextInt();
         }
@@ -27,10 +27,7 @@ public class Tree {
             degree[tmp[0]] +=1;
             degree[tmp[1]] +=1;
         }
-        for (int i = 0; i < degree.length ; i++) {
-            System.out.println(i+ " "+ degree[i]);
 
-        }
         for (int i = 0; i < prufer.length ; i++) {
             int v = 1; // bat dau tu dinh so 1
             while (degree[v] != 1){
