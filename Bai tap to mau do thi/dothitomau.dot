@@ -1,0 +1,19 @@
+graph dothi
+{
+1 [fillcolor=snow,style = filled];
+2 [fillcolor=lightSalmon1,style = filled];
+3 [fillcolor=orange,style = filled];
+4 [fillcolor=lightSalmon1,style = filled];
+5 [fillcolor=orange,style = filled];
+6 [fillcolor=violet,style = filled];
+1--2;
+2--3;
+3--4;
+4--1;
+1--5;
+1--3;
+2--5;
+6--1;
+6--4;
+6--3;
+}
