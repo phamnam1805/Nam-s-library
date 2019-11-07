@@ -1,3 +1,9 @@
+/*
+Bai tap do nuoc
+*/
+
+
+
 public class PourWater {
     static int n = 0;
     static int result = 0;
@@ -5,7 +11,7 @@ public class PourWater {
     public static void main(String[] args) {
         Node[] g = new Node[1000]; // mang g de luu dinh duoc sinh ra
         Node[] visited = new  Node[1000]; // mang luu cac dinh da di
-        Node test = new Node(0,7,4,null);
+        Node test = new Node(0,7,4,null); // so nuoc ban dau o cac binh 1 2 va 3. luong nuoc toi da o 3 binh lan luot la 10 7 4
         Try(g,visited,test);
         if(result == 0) System.out.println("Khong co ket qua nao");
 
@@ -39,7 +45,7 @@ public class PourWater {
         }
         return after;
     }
-    static boolean isExist(Node[] v,Node[] k,Node temp){ // kiem tra xem co ton tai trong mang v hay chua
+    static boolean isExist(Node[] v,Node[] k,Node temp){ // kiem tra xem co ton tai trong mang v hay mang k hay chua, mang v la mang cach dinh duoc sinh ra, mang k la mang chua cac dinh da di het
         for (int i = 1; i <= n ; i++) {
             if(v[i].x == temp.x && v[i].y == temp.y && v[i].z == temp.z) return true;
         }
@@ -65,24 +71,24 @@ public class PourWater {
             v.parents.show();
         }
     }
-    static void Try(Node[] v,Node[] k,Node temp){
-        if(!isExist(v,k,temp)){
-            if(isSolution(temp)){
-                n = n+1;
+    static void Try(Node[] v,Node[] k,Node temp){ // mang v la mang chua cac dinh duoc sinh ra, mang k la mang chua cac dinh da di qua
+        if(!isExist(v,k,temp)){ // kiem tra xem da ton tai chua
+            if(isSolution(temp)){ // kiem tra xem co la nghiem khong
+                n = n+1;  // thuc hien dua temp vao trong mang v
                 v[n] = temp;
-                if (n > 1) v[n].parents = v[n-1];
-                printResult(temp);
-                result += 1;
-                didVisit += 1;
-                k[didVisit] = v[n];
+                if (n > 1) v[n].parents = v[n-1]; // cho temp tro toi parents
+                printResult(temp); // in ket qua
+                result += 1; // so luong ket qua 
+                didVisit += 1; // so dinh da di qua
+                k[didVisit] = v[n]; // dua dinh temp vao trong mang k-mang chua cac dinh da di qua
                 n -= 1;
-                if(n==0) return;
+                if(n==0) return; // neu tat ca cac dinh deu duoc di qua roi thi ket thuc ham
 
             } else {
                 n = n+1;
                 v[n] = temp;
                 if (n > 1) v[n].parents = v[n-1];
-                for (int i = 1; i <= 6 ; i++) {
+                for (int i = 1; i <= 6 ; i++) { // thuc hien backtracking de thu het cac truong hop duong di co the
                     Node temp1 = new Node();
                     temp1 = pourWater(temp,i);
                     Try(v,k,temp1);
@@ -97,10 +103,10 @@ public class PourWater {
 
 }
 class Node{
-    int x;
-    int y;
-    int z;
-    Node parents;
+    int x; // nuoc trong binh 1
+    int y; // nuoc trong binh 2
+    int z; // nuoc trong binh 3
+    Node parents; 
 
     public Node(int x, int y, int z, Node parents) {
         this.x = x;
